@@ -1,0 +1,70 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div style="margin: 25">
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <h1>List User</h1>
+        <div>
+          <a href="/create-user" class="btn btn-primary">Create User</a>
+        </div>
+      </div>
+      <hr />
+      <div>
+        <table class="table table-hover table-bordered">
+          <thead>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Action</th>
+          </thead>
+          <tbody>
+            <% users.forEach( function (user) { %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.fullName %></td>
+              <td><%= user.username %></td>
+              <td><%= user.address %></td>
+              <td>
+                <div style="display: flex; gap: 10px">
+                  <!-- <a href="/handle-view-user/<%= user.id %>"> View a</a> -->
+                  <form action="/handle-view-user/<%= user.id %>" method="get">
+                    <button type="submit" class="btn btn-warning">View</button>
+                  </form>
+                  <form
+                    action="/handle-delete-user/<%= user.id %>"
+                    method="post"
+                  >
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

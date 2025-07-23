@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard</title>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="/admin/images/logos/favicon.png"
+    />
+    <link rel="stylesheet" href="/admin/css/styles.min.css" />
+  </head>
+  <body>
+    <!--  Body Wrapper -->
+    <div
+      class="page-wrapper"
+      id="main-wrapper"
+      data-layout="vertical"
+      data-navbarbg="skin6"
+      data-sidebartype="full"
+      data-sidebar-position="fixed"
+      data-header-position="fixed"
+    >
+      <!-- Sidebar Start -->
+      <%- include('../layout/sidebar'); -%>
+      <!--  Sidebar End -->
+      <!--  Main wrapper -->
+      <div class="body-wrapper">
+        <!--  Header Start -->
+        <%- include('../layout/header'); -%>
+        <!--  Header End -->
+        <div class="body-wrapper-inner">
+          <div class="container-fluid">
+            <!--  Row 1 - Statistics Cards -->
+            <div class="row mb-4">
+              <!-- User Card -->
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card stats-card user-card h-100">
+                  <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                      <div class="icon-circle user-icon me-3">
+                        <iconify-icon
+                          icon="mdi:account-group"
+                          width="20"
+                          height="20"
+                        ></iconify-icon>
+                      </div>
+                      <div class="flex-grow-1">
+                        <h5 class="card-title mb-0 fw-semibold">Users</h5>
+                        <p class="stat-label mb-0">Tổng người dùng</p>
+                      </div>
+                    </div>
+
+                    <div
+                      class="d-flex align-items-end justify-content-between mb-3"
+                    >
+                      <div>
+                        <h2 class="stat-number text-primary mb-1">1,245</h2>
+                        <div class="d-flex align-items-center">
+                          <span class="badge badge-trend trend-up me-2">
+                            <iconify-icon
+                              icon="mdi:arrow-up"
+                              width="12"
+                              height="12"
+                              style="margin-right: 4px"
+                            ></iconify-icon
+                            >+12%
+                          </span>
+                          <small class="text-muted">vs tháng trước</small>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row text-center pt-3 border-top">
+                      <div class="col-6">
+                        <div class="text-success fw-bold fs-5">987</div>
+                        <small class="text-muted">Đang hoạt động</small>
+                      </div>
+                      <div class="col-6">
+                        <div class="text-warning fw-bold fs-5">258</div>
+                        <small class="text-muted">Không hoạt động</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Product Card -->
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card stats-card product-card h-100">
+                  <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                      <div class="icon-circle product-icon me-3">
+                        <iconify-icon
+                          icon="mdi:package-variant-closed"
+                          width="20"
+                          height="20"
+                        ></iconify-icon>
+                      </div>
+                      <div class="flex-grow-1">
+                        <h5 class="card-title mb-0 fw-semibold">Products</h5>
+                        <p class="stat-label mb-0">Tổng sản phẩm</p>
+                      </div>
+                    </div>
+
+                    <div
+                      class="d-flex align-items-end justify-content-between mb-3"
+                    >
+                      <div>
+                        <h2 class="stat-number text-danger mb-1">586</h2>
+                        <div class="d-flex align-items-center">
+                          <span class="badge badge-trend trend-up me-2">
+                            <iconify-icon
+                              icon="mdi:arrow-up"
+                              width="12"
+                              height="12"
+                              style="margin-right: 4px"
+                            ></iconify-icon
+                            >+8%
+                          </span>
+                          <small class="text-muted">vs tháng trước</small>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row text-center pt-3 border-top">
+                      <div class="col-6">
+                        <div class="text-success fw-bold fs-5">456</div>
+                        <small class="text-muted">Có sẵn</small>
+                      </div>
+                      <div class="col-6">
+                        <div class="text-danger fw-bold fs-5">130</div>
+                        <small class="text-muted">Hết hàng</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Order Card -->
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card stats-card order-card h-100">
+                  <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                      <div class="icon-circle order-icon me-3">
+                        <iconify-icon
+                          icon="mdi:cart"
+                          width="20"
+                          height="20"
+                        ></iconify-icon>
+                      </div>
+                      <div class="flex-grow-1">
+                        <h5 class="card-title mb-0 fw-semibold">Orders</h5>
+                        <p class="stat-label mb-0">Tổng đơn hàng</p>
+                      </div>
+                    </div>
+
+                    <div
+                      class="d-flex align-items-end justify-content-between mb-3"
+                    >
+                      <div>
+                        <h2 class="stat-number text-info mb-1">2,847</h2>
+                        <div class="d-flex align-items-center">
+                          <span class="badge badge-trend trend-down me-2">
+                            <iconify-icon
+                              icon="mdi:arrow-down"
+                              width="12"
+                              height="12"
+                              style="margin-right: 4px"
+                            ></iconify-icon
+                            >-3%
+                          </span>
+                          <small class="text-muted">vs tháng trước</small>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row text-center pt-3 border-top">
+                      <div class="col-4">
+                        <div class="text-success fw-bold">2,156</div>
+                        <small class="text-muted">Hoàn thành</small>
+                      </div>
+                      <div class="col-4">
+                        <div class="text-warning fw-bold">487</div>
+                        <small class="text-muted">Đang xử lý</small>
+                      </div>
+                      <div class="col-4">
+                        <div class="text-danger fw-bold">204</div>
+                        <small class="text-muted">Đã hủy</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%- include('../layout/footer'); -%>
+      </div>
+    </div>
+    <!-- CDN Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.35.3/dist/apexcharts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simplebar@5.3.8/dist/simplebar.min.js"></script>
+    <!-- Local Custom Scripts -->
+    <script src="/admin/js/sidebarmenu.js"></script>
+    <script src="/admin/js/app.min.js"></script>
+    <script src="/admin/js/dashboard.js"></script>
+    <!-- Iconify (already using CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+  </body>
+</html>
