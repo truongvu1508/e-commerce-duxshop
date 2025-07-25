@@ -35,7 +35,11 @@
           <div class="container-fluid">
             <div style="width: 600; margin: 0 auto">
               <h3 class="pb-2">Create a user</h3>
-              <form action="/admin/handle-create-user" method="post">
+              <form
+                action="/admin/handle-create-user"
+                method="post"
+                enctype="multipart/form-data"
+              >
                 <div class="mb-3">
                   <label class="form-label">Full name:</label>
                   <input
@@ -71,7 +75,12 @@
                 <div class="row">
                   <div class="mb-3 col-6">
                     <label for="formFile" class="form-label">Avatar</label>
-                    <input class="form-control" type="file" id="avatarFile" />
+                    <input
+                      class="form-control"
+                      type="file"
+                      name="avatar"
+                      id="avatarFile"
+                    />
                   </div>
                   <div
                     class="col-6 d-flex align-items-center justify-content-start"
