@@ -9,7 +9,7 @@
       type="image/png"
       href="/admin/images/logos/favicon.png"
     />
-    <link rel="stylesheet" href="/admin/css/styles-used.min.css" />
+    <link rel="stylesheet" href="/admin/css/styles.min.css" />
   </head>
   <body>
     <!--  Body Wrapper -->
@@ -32,7 +32,62 @@
         <!--  Header End -->
         <div class="body-wrapper-inner">
           <div class="container-fluid">
-            <div>Manager User</div>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <h1>List User</h1>
+              <div>
+                <a href="/admin/create-user" class="btn btn-primary"
+                  >Create User</a
+                >
+              </div>
+            </div>
+            <div>
+              <table class="table table-hover table-bordered">
+                <thead>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Address</th>
+                  <th>Action</th>
+                </thead>
+                <tbody>
+                  <% users.forEach( function (user) { %>
+                  <tr>
+                    <td><%= user.id %></td>
+                    <td><%= user.fullName %></td>
+                    <td><%= user.username %></td>
+                    <td><%= user.address %></td>
+                    <td>
+                      <div style="display: flex; gap: 10px">
+                        <!-- <a href="/handle-view-user/<%= user.id %>"> View a</a> -->
+                        <form
+                          action="/handle-view-user/<%= user.id %>"
+                          method="get"
+                        >
+                          <button type="submit" class="btn btn-warning">
+                            View
+                          </button>
+                        </form>
+                        <form
+                          action="/handle-delete-user/<%= user.id %>"
+                          method="post"
+                        >
+                          <button type="submit" class="btn btn-danger">
+                            Delete
+                          </button>
+                        </form>
+                      </div>
+                    </td>
+                  </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         <%- include('../layout/footer'); -%>

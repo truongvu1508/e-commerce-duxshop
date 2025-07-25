@@ -53,10 +53,17 @@ const updateUserById = async (
   return updateUser;
 };
 
+// Role
+const getAllRoles = async () => {
+  const roles = await prisma.role.findMany();
+  return roles;
+};
+
 export {
   handleCreateUser,
   getAllUsers,
   handleDeleteUser,
   getUserById,
   updateUserById,
+  getAllRoles,
 };
