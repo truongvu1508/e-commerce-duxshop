@@ -38,6 +38,7 @@
   "homepage": "https://github.com/truongvu1508/project-nodejs-summer#readme",
   "dependencies": {
     "@prisma/client": "6.3.0",
+    "bcrypt": "5.1.1",
     "dotenv": "16.0.3",
     "ejs": "3.1.10",
     "express": "^5.0.1",
@@ -46,6 +47,7 @@
     "uuid": "11.0.5"
   },
   "devDependencies": {
+    "@types/bcrypt": "5.0.2",
     "@types/ejs": "3.1.5",
     "@types/express": "5.0.0",
     "@types/multer": "1.4.12",
