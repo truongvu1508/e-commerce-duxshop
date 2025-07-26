@@ -66,7 +66,7 @@
                       <div style="display: flex; gap: 10px">
                         <!-- <a href="/handle-view-user/<%= user.id %>"> View a</a> -->
                         <form
-                          action="/handle-view-user/<%= user.id %>"
+                          action="/admin/view-user/<%= user.id %>"
                           method="get"
                         >
                           <button type="submit" class="btn btn-warning">
@@ -74,7 +74,7 @@
                           </button>
                         </form>
                         <form
-                          action="/handle-delete-user/<%= user.id %>"
+                          action="/admin/delete-user/<%= user.id %>"
                           method="post"
                         >
                           <button type="submit" class="btn btn-danger">

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Create User</title>
+    <title>Detail User</title>
     <link
       rel="shortcut icon"
       type="image/png"
@@ -34,12 +34,13 @@
         <div class="body-wrapper-inner">
           <div class="container-fluid">
             <div style="width: 600; margin: 0 auto">
-              <h3 class="pb-2">Create a user</h3>
+              <h3 class="pb-2">View detail a user</h3>
               <form
-                action="/admin/handle-create-user"
+                action="/admin/update-user"
                 method="post"
                 enctype="multipart/form-data"
               >
+              <input value="<%= user.id%>" name="id" type="text" style="display: none;">
                 <div class="mb-3">
                   <label class="form-label">Full name:</label>
                   <input
@@ -47,27 +48,35 @@
                     type="text"
                     class="form-control"
                     placeholder="Nguyen Van A"
+                    value="<%= user.fullName%>"
                   />
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Email</label>
-                  <input
+                  <input 
+                    disabled
                     name="username"
                     type="email"
                     class="form-control"
                     placeholder="name@example.com"
+                    value="<%= user.username%>"
                   />
                 </div>
                 <div class="row">
                   <div class="mb-3 col-6">
                     <label class="form-label">Phone</label>
-                    <input type="text" class="form-control" name="phone" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="phone"
+                      value="<%= user.phone%>"
+                    />
                   </div>
                   <div class="mb-3 col-6">
                     <label class="form-label">Role</label>
                     <select name="role" class="form-select">
                       <% roles.forEach((role,index) => { %>
-                      <option value="<%-role.id %>"><%- role.name %></option>
+                      <option value="<%-role.id %>" <%= role.id === user.roleId ? 'selected' : ''%>><%- role.name %></option>
                       <%})%>
                     </select>
                   </div>
@@ -85,9 +94,23 @@
                   <div
                     class="col-6 d-flex align-items-center justify-content-start"
                   >
-                    <img
+                    <% if(user.avatar){%>
+                        <img
                       id="avatarPreview"
-                      src=""
+                      src="/images/<%= user.avatar%>"
+                      alt="avatar preview"
+                      class="img-thumbnail border border-2"
+                      style="
+                        max-height: 180px;
+                        max-width: 180px;
+                        display: block;
+                        object-fit: cover;
+                      "
+                      accept=".png, .jpg, .jpeg, .gif"
+                    />
+                      <%} else {%>
+                        <img
+                      id="avatarPreview"
                       alt="avatar preview"
                       class="img-thumbnail border border-2"
                       style="
@@ -97,16 +120,15 @@
                         object-fit: cover;
                       "
                       accept=".png, .jpg, .jpeg, .gif"
-                    />
+                    />                     
+                      <%} %>
                   </div>
                 </div>
                 <div class="mb-3">
                   <label class="form-label">Address</label>
-                  <textarea
-                    name="address"
-                    class="form-control"
-                    rows="2"
-                  ></textarea>
+                  <textarea name="address" class="form-control" rows="2">
+<%= user.address%></textarea
+                  >
                 </div>
                 <div class="mb-3">
                   <button type="submit" class="btn btn-warning">Submit</button>
