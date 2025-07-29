@@ -7,4 +7,8 @@ styles.min.css
 styles.min.css.map
 scss
 icons
+public/admin/css
 public/images
+public/client/css
+public/client/img
+public/client/lib

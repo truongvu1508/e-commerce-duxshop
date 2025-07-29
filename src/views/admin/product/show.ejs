@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dashboard</title>
+    <title>Manager User</title>
     <link
       rel="shortcut icon"
       type="image/png"
@@ -32,8 +32,32 @@
         <!--  Header End -->
         <div class="body-wrapper-inner">
           <div class="container-fluid">
-            <!--  Row 1 - Statistics Cards -->
-            <div>Order Page</div>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <h1>List Product</h1>
+              <div>
+                <a href="/admin/create-product" class="btn btn-primary"
+                  >Create Product</a
+                >
+              </div>
+            </div>
+            <div>
+              <table class="table table-hover table-bordered">
+                <thead>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Factory</th>
+                  <th>Action</th>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
           </div>
         </div>
         <%- include('../layout/footer'); -%>
