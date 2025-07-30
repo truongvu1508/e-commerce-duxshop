@@ -83,7 +83,7 @@ const getViewProduct = async (req: Request, res: Response) => {
   // factory
   const factoryOptions = [
     { name: "Apple", value: "APPLE" },
-    { name: "Asus", value: "APPLE" },
+    { name: "Asus", value: "ASUS" },
     { name: "Lenovo", value: "LENOVO" },
     { name: "Dell", value: "DELL" },
     { name: "LG", value: "LG" },
@@ -110,6 +110,7 @@ const postUpdateProduct = async (req: Request, res: Response) => {
   const { id, name, price, detailDesc, shortDesc, quantity, factory, target } =
     req.body as TProductSchema;
   const image = req?.file?.filename ?? null;
+
   // update user by id
   const a = await updateProductById(
     id,
