@@ -47,16 +47,16 @@ model Order {
 }
 
 model Product {
-  id         Int    @id @default(autoincrement())
-  name       String @db.VarChar(255)
+  id         Int     @id @default(autoincrement())
+  name       String  @db.VarChar(255)
   price      Int
-  image      String @db.VarChar(255)
-  detailDesc String @db.VarChar(255)
-  shortDesc  String @db.VarChar(255)
+  image      String? @db.VarChar(255)
+  detailDesc String  @db.VarChar(255)
+  shortDesc  String  @db.VarChar(255)
   quantity   Int
-  sold       String @db.VarChar(255)
-  factory    String @db.VarChar(255)
-  target     String @db.VarChar(255)
+  sold       Int?    @default(0)
+  factory    String  @db.VarChar(255)
+  target     String  @db.VarChar(255)
 
   @@map("products")
 }

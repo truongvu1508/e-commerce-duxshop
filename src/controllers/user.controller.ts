@@ -19,6 +19,7 @@ const getCreateUserPage = async (req: Request, res: Response) => {
     roles: roles,
   });
 };
+
 const postCreateUser = async (req: Request, res: Response) => {
   const { fullName, username, phone, role, address } = req.body;
   const file = req.file;

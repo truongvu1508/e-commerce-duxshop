@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Detail User</title>
+    <title>Create Product</title>
     <link
       rel="shortcut icon"
       type="image/png"
@@ -34,70 +34,99 @@
         <div class="body-wrapper-inner">
           <div class="container-fluid">
             <div style="width: 600; margin: 0 auto">
-              <h3 class="pb-2">View detail user</h3>
+              <h3 class="pb-2">View detail product</h3>
               <form
-                action="/admin/update-user"
+                action="/admin/update-product"
                 method="post"
                 enctype="multipart/form-data"
               >
-              <input value="<%= user.id%>" name="id" type="text" style="display: none;">
+                <input
+                  value="<%= product.id%>"
+                  name="id"
+                  type="text"
+                  style="display: none"
+                />
+
                 <div class="mb-3">
-                  <label class="form-label">Full name:</label>
+                  <label class="form-label">Name</label>
                   <input
-                    name="fullName"
+                    value="<%= product.name%>"
+                    name="name"
                     type="text"
                     class="form-control"
-                    placeholder="Nguyen Van A"
-                    value="<%= user.fullName%>"
                   />
                 </div>
                 <div class="mb-3">
-                  <label class="form-label">Email</label>
-                  <input 
-                    disabled
-                    name="username"
-                    type="email"
+                  <label class="form-label">Price</label>
+                  <input
+                    value="<%= product.price%>"
+                    name="price"
+                    type="number"
                     class="form-control"
-                    placeholder="name@example.com"
-                    value="<%= user.username%>"
                   />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Detail Description</label>
+                  <textarea name="detailDesc" class="form-control" rows="3">
+<%= product.detailDesc%></textarea
+                  >
                 </div>
                 <div class="row">
                   <div class="mb-3 col-6">
-                    <label class="form-label">Phone</label>
+                    <label class="form-label">Short Description</label>
                     <input
+                      value="<%= product.shortDesc%>"
+                      name="shortDesc"
                       type="text"
                       class="form-control"
-                      name="phone"
-                      value="<%= user.phone%>"
                     />
                   </div>
                   <div class="mb-3 col-6">
-                    <label class="form-label">Role</label>
-                    <select name="role" class="form-select">
-                      <% roles.forEach((role,index) => { %>
-                      <option value="<%-role.id %>" <%= role.id === user.roleId ? 'selected' : ''%>><%- role.name %></option>
+                    <label class="form-label">Quantity</label>
+                    <input
+                      value="<%= product.quantity%>"
+                      type="number"
+                      class="form-control"
+                      name="quantity"
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="mb-3 col-6">
+                    <label class="form-label">Factory</label>
+                    <select name="factory" class="form-select">
+                      <% factoryOptions.forEach((factory,index) => { %>
+                      <option value="<%-factory.value %>" <%= factory.value === product.factory ? 'selected' : ''%>><%- factory.name %></option>
+                      <%})%>
+                    </select>
+                  </div>
+                  <div class="mb-3 col-6">
+                    <label class="form-label">Target</label>
+                    <select name="target" class="form-select">
+                      <% targetOptions.forEach((target,index) => { %>
+                      <option value="<%-target.value %>" <%= target.value === product.target ? 'selected' : ''%>><%- target.name %></option>
                       <%})%>
                     </select>
                   </div>
                 </div>
+
                 <div class="row">
                   <div class="mb-3 col-6">
-                    <label for="formFile" class="form-label">Avatar</label>
+                    <label for="formFile" class="form-label">Image</label>
                     <input
                       class="form-control"
                       type="file"
-                      name="avatar"
+                      name="image"
                       id="avatarFile"
                     />
                   </div>
                   <div
                     class="col-6 d-flex align-items-center justify-content-start"
                   >
-                    <% if(user.avatar){%>
-                        <img
+                    <% if(product.image){%>
+                    <img
                       id="avatarPreview"
-                      src="/images/<%= user.avatar%>"
+                      src="/images/product/<%= product.image%>"
                       alt="avatar preview"
                       class="img-thumbnail border border-2"
                       style="
@@ -108,8 +137,8 @@
                       "
                       accept=".png, .jpg, .jpeg, .gif"
                     />
-                      <%} else {%>
-                        <img
+                    <%} else {%>
+                    <img
                       id="avatarPreview"
                       alt="avatar preview"
                       class="img-thumbnail border border-2"
@@ -120,16 +149,11 @@
                         object-fit: cover;
                       "
                       accept=".png, .jpg, .jpeg, .gif"
-                    />                     
-                      <%} %>
+                    />
+                    <%} %>
                   </div>
                 </div>
-                <div class="mb-3">
-                  <label class="form-label">Address</label>
-                  <textarea name="address" class="form-control" rows="2">
-<%= user.address%></textarea
-                  >
-                </div>
+
                 <div class="mb-3">
                   <button type="submit" class="btn btn-warning">Submit</button>
                 </div>

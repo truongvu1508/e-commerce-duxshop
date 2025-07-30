@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Manager User</title>
+    <title>Manager Product</title>
     <link
       rel="shortcut icon"
       type="image/png"
@@ -55,7 +55,36 @@
                   <th>Factory</th>
                   <th>Action</th>
                 </thead>
-                <tbody></tbody>
+                <tbody>
+                  <% products.forEach( function (product) { %>
+                  <tr>
+                    <td><%= product.id %></td>
+                    <td><%= product.name %></td>
+                    <td><%= product.price %></td>
+                    <td><%= product.factory %></td>
+                    <td>
+                      <div style="display: flex; gap: 10px">
+                        <form
+                          action="/admin/view-product/<%= product.id %>"
+                          method="get"
+                        >
+                          <button type="submit" class="btn btn-warning">
+                            View
+                          </button>
+                        </form>
+                        <form
+                          action="/admin/delete-product/<%= product.id %>"
+                          method="post"
+                        >
+                          <button type="submit" class="btn btn-danger">
+                            Delete
+                          </button>
+                        </form>
+                      </div>
+                    </td>
+                  </tr>
+                  <% }) %>
+                </tbody>
               </table>
             </div>
           </div>
