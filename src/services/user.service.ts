@@ -8,6 +8,7 @@ const saltRounds = 10;
 const hashPassword = async (plainText: string) => {
   return await bcrypt.hash(plainText, saltRounds);
 };
+
 const handleCreateUser = async (
   fullName: string,
   email: string,

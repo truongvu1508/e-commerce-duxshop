@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Laptop - DUX</title>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="admin/images/logos/logo-dux.svg"
+    />
+    <link rel="stylesheet" href="admin/css/styles.min.css" />
+  </head>
+
+  <body>
+    <!--  Body Wrapper -->
+    <div
+      class="page-wrapper"
+      id="main-wrapper"
+      data-layout="vertical"
+      data-navbarbg="skin6"
+      data-sidebartype="full"
+      data-sidebar-position="fixed"
+      data-header-position="fixed"
+    >
+      <div
+        class="position-relative overflow-hidden text-bg-light min-vh-100 d-flex align-items-center justify-content-center"
+      >
+        <div class="d-flex align-items-center justify-content-center w-100">
+          <div class="row justify-content-center w-100">
+            <div class="col-md-10 col-lg-18 col-xxl-6">
+              <div class="card mb-0">
+                <div class="card-body">
+                  <a
+                    href="./index.html"
+                    class="text-nowrap logo-img text-center d-block py-3 w-100"
+                  >
+                    <svg
+                      width="180"
+                      height="60"
+                      viewBox="0 0 180 60"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        x="10"
+                        y="0"
+                        width="160"
+                        height="50"
+                        rx="5"
+                        fill="#1E90FF"
+                      />
+                      <rect
+                        x="0"
+                        y="50"
+                        width="180"
+                        height="10"
+                        rx="3"
+                        fill="#555"
+                      />
+
+                      <text
+                        x="90"
+                        y="30"
+                        font-family="Arial Black, sans-serif"
+                        font-size="34"
+                        fill="white"
+                        text-anchor="middle"
+                        alignment-baseline="middle"
+                      >
+                        DUX
+                      </text>
+                    </svg>
+                  </a>
+                  <p class="text-center">Create Account</p>
+                  <% errors.forEach( function (error) { %>
+                  <div class="alert alert-danger mb-3"><%= error%></div>
+                  <% }) %>
+                  <form method="POST" action="/register">
+                    <div class="mb-3">
+                      <label for="fullName" class="form-label">Full Name</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="fullName"
+                        name="fullName"
+                        value="<%= oldData.fullName%>"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="email" class="form-label"
+                        >Email Address</label
+                      >
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        name="email"
+                        value="<%= oldData.email%>"
+                      />
+                    </div>
+                    <div class="row mb-4">
+                      <div class="col">
+                        <label for="password" class="form-label"
+                          >Password</label
+                        >
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="password"
+                          name="password"
+                          value="<%= oldData.password%>"
+                        />
+                      </div>
+                      <div class="col">
+                        <label for="confirmPassword" class="form-label"
+                          >Confirm Password</label
+                        >
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="confirmPassword"
+                          name="confirmPassword"
+                          value="<%= oldData.confirmPassword%>"
+                        />
+                      </div>
+                    </div>
+                    <button
+                      class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2"
+                    >
+                      Create Account
+                    </button>
+                    <div
+                      class="d-flex align-items-center justify-content-center"
+                    >
+                      <p class="fs-4 mb-0 fw-bold">Already have an Account?</p>
+                      <a class="text-primary fw-bold ms-2" href="/login"
+                        >Login</a
+                      >
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="admin/libs/jquery/dist/jquery.min.js"></script>
+    <script src="admin/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- solar icons -->
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+  </body>
+</html>
