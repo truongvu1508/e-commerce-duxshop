@@ -27,15 +27,28 @@ import {
   getRegisterPage,
   postRegister,
 } from "controllers/client/auth.controller";
+import passport from "passport";
 
 const router = express.Router();
 
 const webRoutes = (app: Express) => {
+  // user route
   router.get("/", getHomePage);
+
+  // auth
   router.get("/login", getLoginPage);
+  router.post(
+    "/login",
+    passport.authenticate("local", {
+      successRedirect: "/",
+      failureRedirect: "/login",
+      failureMessage: true,
+    })
+  );
   router.get("/register", getRegisterPage);
   router.post("/register", postRegister);
 
+  // product
   router.get("/product/:id", getProductPage);
 
   // admin routes

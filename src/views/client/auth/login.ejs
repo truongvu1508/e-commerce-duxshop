@@ -72,34 +72,34 @@
                     </svg>
                   </a>
                   <p class="text-center">Login</p>
-                  <form>
+                  <% messages.forEach( function (message) { %>
+                  <div class="alert alert-danger mb-3"><%= message%></div>
+                  <% }) %>
+                  <form method="post" action="/login">
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label"
-                        >Username</label
-                      >
+                      <label for="username" class="form-label">Username</label>
                       <input
                         type="email"
                         class="form-control"
-                        id="exampleInputEmail1"
-                        aria-describedby="emailHelp"
+                        id="username"
+                        name="username"
                       />
                     </div>
                     <div class="mb-4">
-                      <label for="exampleInputPassword1" class="form-label"
-                        >Password</label
-                      >
+                      <label for="password" class="form-label">Password</label>
                       <input
                         type="password"
                         class="form-control"
-                        id="exampleInputPassword1"
+                        id="password"
+                        name="password"
                       />
                     </div>
 
-                    <a
-                      href="./index.html"
+                    <button
                       class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2"
-                      >Login In</a
                     >
+                      Login In
+                    </button>
                     <div
                       class="d-flex align-items-center justify-content-center"
                     >
