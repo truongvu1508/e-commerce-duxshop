@@ -37,58 +37,76 @@
         class="navbar-nav flex-row ms-auto align-items-center justify-content-end"
       >
         <li class="nav-item">
-          <span class="text-primary"
-            >Welcome, <span class="fw-bolder">TruongVu</span></span
-          >
+          <div class="mr-2" style="display: inline-block; margin-right: 20px">
+            <span class="text-primary mr-2"
+              >Welcome, <span class="fw-bolder">TruongVu</span></span
+            >
+          </div>
         </li>
         <li class="nav-item dropdown">
-          <a
-            class="nav-link"
-            href="javascript:void(0)"
-            id="drop2"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <img
-              src="/admin/images/profile/user-1.jpg"
-              alt=""
-              width="35"
-              height="35"
-              class="rounded-circle"
-            />
-          </a>
-          <div
-            class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
-            aria-labelledby="drop2"
-          >
-            <div class="message-body">
-              <a
-                href="javascript:void(0)"
-                class="d-flex align-items-center gap-2 dropdown-item"
-              >
-                <i class="ti ti-user fs-6"></i>
-                <p class="mb-0 fs-3">My Profile</p>
-              </a>
-              <a
-                href="javascript:void(0)"
-                class="d-flex align-items-center gap-2 dropdown-item"
-              >
-                <i class="ti ti-mail fs-6"></i>
-                <p class="mb-0 fs-3">My Account</p>
-              </a>
-              <a
-                href="javascript:void(0)"
-                class="d-flex align-items-center gap-2 dropdown-item"
-              >
-                <i class="ti ti-list-check fs-6"></i>
-                <p class="mb-0 fs-3">My Task</p>
-              </a>
-              <a
-                href="./authentication-login.html"
-                class="btn btn-outline-primary mx-3 mt-2 d-block"
-                >Logout</a
-              >
-            </div>
+          <div class="dropdown">
+            <a
+              href="#"
+              class="my-auto dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <img
+                src="/admin/images/profile/user-1.jpg"
+                alt=""
+                width="35"
+                height="35"
+                class="rounded-circle"
+              />
+            </a>
+            <ul
+              class="dropdown-menu dropdown-menu-end"
+              style="
+                min-width: 280px;
+                border-radius: 10px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                border: 1px solid #e0e0e0;
+              "
+            >
+              <!-- User Info Header -->
+              <li class="px-3 py-3" style="border-bottom: 1px solid #f0f0f0">
+                <div class="d-flex align-items-center">
+                  <img
+                    src="/admin/images/profile/user-1.jpg"
+                    alt="Avatar"
+                    class="rounded-circle me-3"
+                    style="width: 45px; height: 45px; object-fit: cover"
+                  />
+                  <div>
+                    <h6 class="mb-0" style="font-weight: 600; color: #333">
+                      <%= user.fullName%>
+                    </h6>
+                    <small class="text-muted"><%= user.username%></small>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <form method="post" action="/logout">
+                  <button
+                    class="dropdown-item py-2"
+                    href="#"
+                    style="
+                      transition: all 0.3s ease;
+                      border-radius: 5px;
+                      margin: 5px 10px;
+                      color: #dc3545;
+                    "
+                  >
+                    <i
+                      class="fas fa-sign-out-alt me-3"
+                      style="color: #dc3545; width: 20px"
+                    ></i>
+                    Đăng xuất
+                  </button>
+                </form>
+              </li>
+            </ul>
           </div>
         </li>
       </ul>

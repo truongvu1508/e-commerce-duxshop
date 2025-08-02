@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import {
   RegisterSchema,
   TRegisterSchema,
@@ -70,4 +70,19 @@ const getSuccessRedirectPage = async (req: Request, res: Response) => {
   }
 };
 
-export { getLoginPage, getRegisterPage, postRegister, getSuccessRedirectPage };
+const postLogout = async (req: Request, res: Response, next: NextFunction) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+};
+
+export {
+  getLoginPage,
+  getRegisterPage,
+  postRegister,
+  getSuccessRedirectPage,
+  postLogout,
+};

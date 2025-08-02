@@ -126,22 +126,24 @@
                 <hr class="dropdown-divider mx-3" style="margin: 10px 0" />
               </li>
               <li>
-                <a
-                  class="dropdown-item py-2"
-                  href="#"
-                  style="
-                    transition: all 0.3s ease;
-                    border-radius: 5px;
-                    margin: 5px 10px;
-                    color: #dc3545;
-                  "
-                >
-                  <i
-                    class="fas fa-sign-out-alt me-3"
-                    style="color: #dc3545; width: 20px"
-                  ></i>
-                  Đăng xuất
-                </a>
+                <form method="post" action="/logout">
+                  <button
+                    class="dropdown-item py-2"
+                    href="#"
+                    style="
+                      transition: all 0.3s ease;
+                      border-radius: 5px;
+                      margin: 5px 10px;
+                      color: #dc3545;
+                    "
+                  >
+                    <i
+                      class="fas fa-sign-out-alt me-3"
+                      style="color: #dc3545; width: 20px"
+                    ></i>
+                    Đăng xuất
+                  </button>
+                </form>
               </li>
             </ul>
           </div>
