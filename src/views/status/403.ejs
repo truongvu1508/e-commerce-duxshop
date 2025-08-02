@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>403 Error - Access Forbidden | Laptop DUX</title>
+    <meta
+      name="description"
+      content="Bạn không có quyền truy cập trang này. Vui lòng đăng nhập hoặc liên hệ quản trị viên."
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link href="status/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container-fluid error-container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-6">
+          <div class="error-card">
+            <!-- Error Icon -->
+            <div class="error-icon">
+              <i class="fas fa-lock"></i>
+            </div>
+
+            <!-- Error Code -->
+            <div class="error-code">403</div>
+
+            <!-- Error Title -->
+            <h1 class="error-title">Truy cập bị từ chối</h1>
+
+            <!-- Error Message -->
+            <p class="error-message">
+              Bạn không có quyền truy cập vào trang này. Trang này có thể yêu
+              cầu đăng nhập hoặc chỉ dành cho quản trị viên và nhân viên được ủy
+              quyền.
+            </p>
+
+            <!-- Error Details -->
+            <div class="error-details">
+              <h5><i class="fas fa-shield-alt me-2"></i>Lý do có thể:</h5>
+              <ul>
+                <li>Bạn chưa đăng nhập vào hệ thống</li>
+                <li>Tài khoản của bạn không có quyền truy cập</li>
+                <li>Phiên đăng nhập đã hết hạn</li>
+                <li>Trang này chỉ dành cho quản trị viên</li>
+                <li>Địa chỉ IP của bạn bị hạn chế</li>
+              </ul>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="mt-4">
+              <a href="/login" class="btn-primary">
+                <i class="fas fa-sign-in-alt me-2"></i>Đăng nhập
+              </a>
+              <a href="/" class="btn-secondary">
+                <i class="fas fa-home me-2"></i>Về trang chủ
+              </a>
+            </div>
+
+            <!-- Alternative Actions -->
+            <div class="mt-4">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div
+                    class="card border-0"
+                    style="background: rgba(129, 196, 8, 0.05)"
+                  >
+                    <div class="card-body text-center p-3">
+                      <i
+                        class="fas fa-user-plus text-success mb-2"
+                        style="
+                          font-size: 24px;
+                          color: var(--primary-green) !important;
+                        "
+                      ></i>
+                      <h6 class="card-title mb-2">Chưa có tài khoản?</h6>
+                      <a
+                        href="/register"
+                        class="btn btn-sm btn-outline-success rounded-pill"
+                      >
+                        Đăng ký ngay
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div
+                    class="card border-0"
+                    style="background: rgba(129, 196, 8, 0.05)"
+                  >
+                    <div class="card-body text-center p-3">
+                      <i
+                        class="fas fa-key text-warning mb-2"
+                        style="
+                          font-size: 24px;
+                          color: var(--primary-green) !important;
+                        "
+                      ></i>
+                      <h6 class="card-title mb-2">Quên mật khẩu?</h6>
+                      <a
+                        href="/forgot-password"
+                        class="btn btn-sm btn-outline-success rounded-pill"
+                      >
+                        Khôi phục
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Support -->
+            <div
+              class="mt-4 p-3 rounded"
+              style="
+                background: rgba(129, 196, 8, 0.05);
+                border: 1px solid rgba(129, 196, 8, 0.1);
+              "
+            >
+              <h6 class="mb-2" style="color: var(--primary-green)">
+                <i class="fas fa-headset me-2"></i>Cần hỗ trợ?
+              </h6>
+              <p class="mb-2 small text-muted">
+                Nếu bạn cho rằng đây là lỗi hệ thống, vui lòng liên hệ với chúng
+                tôi:
+              </p>
+              <div class="d-flex gap-2 flex-wrap">
+                <a
+                  href="/contact"
+                  class="btn btn-sm btn-outline-success rounded-pill"
+                >
+                  <i class="fas fa-envelope me-1"></i>Email hỗ trợ
+                </a>
+                <a
+                  href="tel:1900xxxx"
+                  class="btn btn-sm btn-outline-success rounded-pill"
+                >
+                  <i class="fas fa-phone me-1"></i>Hotline
+                </a>
+                <a
+                  href="/chat"
+                  class="btn btn-sm btn-outline-success rounded-pill"
+                >
+                  <i class="fas fa-comments me-1"></i>Chat trực tuyến
+                </a>
+              </div>
+            </div>
+
+            <!-- Security Notice -->
+            <div class="mt-3">
+              <small class="text-muted">
+                <i class="fas fa-info-circle me-1"></i>
+                Vì lý do bảo mật, chúng tôi ghi lại tất cả các lần truy cập
+                không được phép.
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="status/js/script.js"></script>
+  </body>
+</html>

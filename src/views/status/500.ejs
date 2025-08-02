@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>500 Error - Internal Server Error | Laptop DUX</title>
+    <meta
+      name="description"
+      content="Hệ thống đang gặp sự cố tạm thời. Chúng tôi đang khắc phục và sẽ khôi phục sớm nhất."
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link href="status/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container-fluid error-container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-6">
+          <div class="error-card">
+            <!-- Error Icon -->
+            <div class="error-icon">
+              <i class="fas fa-tools"></i>
+            </div>
+
+            <!-- Error Code -->
+            <div class="error-code">500</div>
+
+            <!-- Error Title -->
+            <h1 class="error-title">Lỗi hệ thống</h1>
+
+            <!-- Error Message -->
+            <p class="error-message">
+              Rất tiếc, hệ thống của chúng tôi đang gặp sự cố tạm thời. Đội ngũ
+              kỹ thuật đã được thông báo và đang khắc phục vấn đề.
+            </p>
+
+            <!-- Status Information -->
+            <div
+              class="alert alert-warning border-0 rounded-3"
+              style="
+                background: rgba(255, 193, 7, 0.1);
+                border: 1px solid rgba(255, 193, 7, 0.2) !important;
+              "
+            >
+              <div class="d-flex align-items-center">
+                <i
+                  class="fas fa-exclamation-triangle me-3"
+                  style="color: #ffc107; font-size: 20px"
+                ></i>
+                <div>
+                  <strong>Tình trạng:</strong> Đang khắc phục sự cố
+                  <br />
+                  <small class="text-muted"
+                    >Thời gian ước tính: 15-30 phút</small
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Error Details -->
+            <div class="error-details">
+              <h5><i class="fas fa-cog me-2"></i>Chúng tôi đang làm gì:</h5>
+              <ul>
+                <li>Kiểm tra và khôi phục dịch vụ</li>
+                <li>Phân tích nguyên nhân gốc rễ</li>
+                <li>Đảm bảo dữ liệu an toàn</li>
+                <li>Cập nhật trạng thái thời gian thực</li>
+              </ul>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="mt-4">
+              <button onclick="location.reload()" class="btn-primary">
+                <i class="fas fa-sync-alt me-2"></i>Thử lại
+              </button>
+              <a href="/" class="btn-secondary">
+                <i class="fas fa-home me-2"></i>Về trang chủ
+              </a>
+            </div>
+
+            <!-- Auto Refresh Notice -->
+            <div
+              class="mt-3 p-3 rounded"
+              style="
+                background: rgba(129, 196, 8, 0.05);
+                border: 1px solid rgba(129, 196, 8, 0.1);
+              "
+            >
+              <div class="d-flex align-items-center justify-content-between">
+                <div>
+                  <i class="fas fa-sync text-success me-2"></i>
+                  <small
+                    >Tự động làm mới sau:
+                    <span id="countdown" class="fw-bold">30</span> giây</small
+                  >
+                </div>
+                <button
+                  class="btn btn-sm btn-outline-success rounded-pill"
+                  onclick="clearAutoRefresh()"
+                >
+                  <i class="fas fa-pause me-1"></i>Tạm dừng
+                </button>
+              </div>
+            </div>
+
+            <!-- Service Status -->
+            <div class="mt-4">
+              <h6 class="mb-3" style="color: var(--primary-green)">
+                <i class="fas fa-server me-2"></i>Trạng thái dịch vụ
+              </h6>
+              <div class="row g-2">
+                <div class="col-6 col-md-3">
+                  <div
+                    class="text-center p-2 rounded"
+                    style="background: rgba(220, 53, 69, 0.1)"
+                  >
+                    <i class="fas fa-circle text-danger"></i>
+                    <small class="d-block mt-1">Web Server</small>
+                  </div>
+                </div>
+                <div class="col-6 col-md-3">
+                  <div
+                    class="text-center p-2 rounded"
+                    style="background: rgba(25, 135, 84, 0.1)"
+                  >
+                    <i class="fas fa-circle text-success"></i>
+                    <small class="d-block mt-1">Database</small>
+                  </div>
+                </div>
+                <div class="col-6 col-md-3">
+                  <div
+                    class="text-center p-2 rounded"
+                    style="background: rgba(25, 135, 84, 0.1)"
+                  >
+                    <i class="fas fa-circle text-success"></i>
+                    <small class="d-block mt-1">CDN</small>
+                  </div>
+                </div>
+                <div class="col-6 col-md-3">
+                  <div
+                    class="text-center p-2 rounded"
+                    style="background: rgba(255, 193, 7, 0.1)"
+                  >
+                    <i class="fas fa-circle text-warning"></i>
+                    <small class="d-block mt-1">API</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Support -->
+            <div
+              class="mt-4 p-3 rounded"
+              style="
+                background: rgba(129, 196, 8, 0.05);
+                border: 1px solid rgba(129, 196, 8, 0.1);
+              "
+            >
+              <h6 class="mb-2" style="color: var(--primary-green)">
+                <i class="fas fa-headset me-2"></i>Cần hỗ trợ khẩn cấp?
+              </h6>
+              <p class="mb-2 small text-muted">
+                Nếu bạn đang có giao dịch quan trọng, vui lòng liên hệ hotline
+                24/7:
+              </p>
+              <div class="d-flex gap-2 flex-wrap justify-content-center">
+                <a
+                  href="tel:1900xxxx"
+                  class="btn btn-sm btn-outline-danger rounded-pill"
+                >
+                  <i class="fas fa-phone me-1"></i>Hotline khẩn cấp
+                </a>
+                <a
+                  href="/status"
+                  class="btn btn-sm btn-outline-success rounded-pill"
+                >
+                  <i class="fas fa-chart-line me-1"></i>Trang trạng thái
+                </a>
+                <a
+                  href="mailto:support@laptopDUX.com"
+                  class="btn btn-sm btn-outline-success rounded-pill"
+                >
+                  <i class="fas fa-envelope me-1"></i>Email hỗ trợ
+                </a>
+              </div>
+            </div>
+
+            <!-- Error ID for Support -->
+            <div class="mt-3 text-center">
+              <small class="text-muted">
+                <i class="fas fa-hashtag me-1"></i>
+                Mã lỗi:
+                <code id="errorId">ERR-500-<%= new Date().getTime() %></code>
+                <button
+                  class="btn btn-link btn-sm p-0 ms-1"
+                  onclick="copyErrorId()"
+                  title="Sao chép mã lỗi"
+                >
+                  <i class="fas fa-copy"></i>
+                </button>
+              </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="status/js/script.js"></script>
+
+    <script>
+      // Auto refresh countdown
+      let countdownTimer;
+      let autoRefreshTimer;
+      let seconds = 30;
+
+      function startCountdown() {
+        const countdownElement = document.getElementById("countdown");
+
+        countdownTimer = setInterval(() => {
+          seconds--;
+          if (countdownElement) {
+            countdownElement.textContent = seconds;
+          }
+
+          if (seconds <= 0) {
+            location.reload();
+          }
+        }, 1000);
+      }
+
+      function clearAutoRefresh() {
+        clearInterval(countdownTimer);
+        clearTimeout(autoRefreshTimer);
+
+        const button = event.target.closest("button");
+        button.innerHTML = '<i class="fas fa-play me-1"></i>Tiếp tục';
+        button.onclick = () => {
+          seconds = 30;
+          startCountdown();
+          button.innerHTML = '<i class="fas fa-pause me-1"></i>Tạm dừng';
+          button.onclick = clearAutoRefresh;
+        };
+      }
+
+      function copyErrorId() {
+        const errorId = document.getElementById("errorId").textContent;
+        navigator.clipboard.writeText(errorId).then(() => {
+          // Show toast notification
+          const toast = document.createElement("div");
+          toast.className = "position-fixed top-0 end-0 p-3";
+          toast.style.zIndex = "9999";
+          toast.innerHTML = `
+                    <div class="toast show" role="alert">
+                        <div class="toast-body bg-success text-white rounded">
+                            <i class="fas fa-check me-2"></i>Đã sao chép mã lỗi!
+                        </div>
+                    </div>
+                `;
+          document.body.appendChild(toast);
+
+          setTimeout(() => {
+            toast.remove();
+          }, 3000);
+        });
+      }
+
+      // Start countdown on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        startCountdown();
+
+        // Report 500 error for analytics
+        if (typeof reportError === "function") {
+          reportError("500", "Internal Server Error");
+        }
+      });
+    </script>
+  </body>
+</html>
