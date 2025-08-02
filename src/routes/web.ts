@@ -49,54 +49,53 @@ const webRoutes = (app: Express) => {
       failureMessage: true,
     })
   );
-  router.get("/register", getRegisterPage);
+  router.get("/register", isLogin, getRegisterPage);
   router.post("/register", postRegister);
 
   // product
   router.get("/product/:id", getProductPage);
 
   // admin routes
-  router.get("/admin", isAdmin, getDashboardPage);
-  // Admin user management routes
-  router.get("/admin/user", isAdmin, getAdminUserPage);
-  router.get("/admin/create-user", isAdmin, getCreateUserPage);
+  router.get("/admin", getDashboardPage);
+  router.get("/admin/user", getAdminUserPage);
+  router.get("/admin/create-user", getCreateUserPage);
   router.post(
     "/admin/handle-create-user",
-    isAdmin,
+
     fileUploadMiddleware("avatar"),
     postCreateUser
   );
-  router.post("/admin/delete-user/:id", isAdmin, postDeleteUser);
-  router.get("/admin/view-user/:id", isAdmin, getViewUser);
+  router.post("/admin/delete-user/:id", postDeleteUser);
+  router.get("/admin/view-user/:id", getViewUser);
   router.post(
     "/admin/update-user",
-    isAdmin,
+
     fileUploadMiddleware("avatar"),
     postUpdateUser
   );
 
   // Product
-  router.get("/admin/product", isAdmin, getAdminProductPage);
-  router.get("/admin/create-product", isAdmin, getAdminCreateProductPage);
+  router.get("/admin/product", getAdminProductPage);
+  router.get("/admin/create-product", getAdminCreateProductPage);
   router.post(
     "/admin/create-product",
-    isAdmin,
+
     fileUploadMiddleware("image", "images/product"),
     postAdminCreateProduct
   );
-  router.post("/admin/delete-product/:id", isAdmin, postDeleteProduct);
-  router.get("/admin/view-product/:id", isAdmin, getViewProduct);
+  router.post("/admin/delete-product/:id", postDeleteProduct);
+  router.get("/admin/view-product/:id", getViewProduct);
   router.post(
     "/admin/update-product",
-    isAdmin,
+
     fileUploadMiddleware("image", "images/product"),
     postUpdateProduct
   );
 
   // Order
-  router.get("/admin/order", isAdmin, getAdminOrderPage);
+  router.get("/admin/order", getAdminOrderPage);
 
-  app.use("/", router);
+  app.use("/", isAdmin, router);
 };
 
 export default webRoutes;

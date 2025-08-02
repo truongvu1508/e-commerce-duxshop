@@ -59,7 +59,7 @@ initDatabase();
 
 // handle 404 not found
 app.use(function (req, res) {
-  res.send("404 not found");
+  res.render("status/404.ejs");
 });
 
 app.listen(8080, () => {
