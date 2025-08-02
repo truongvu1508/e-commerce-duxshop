@@ -1,6 +1,6 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
-import { handleLogin } from "services/client/auth.service";
+import { getUserWithRoleById, handleLogin } from "services/client/auth.service";
 import { getUserById } from "services/user.service";
 
 const configPassportLocal = () => {
@@ -20,6 +20,8 @@ const configPassportLocal = () => {
       return handleLogin(username, password, callback);
     })
   );
+
+  // save data in session
   passport.serializeUser(function (user: any, callback) {
     callback(null, {
       id: user.id,
@@ -31,7 +33,8 @@ const configPassportLocal = () => {
     const { id, username } = user;
 
     // query database
-    const userInDatabase = await getUserById(id);
+    const userInDatabase = await getUserWithRoleById(id);
+
     return callback(null, { ...userInDatabase });
   });
 };

@@ -25,22 +25,24 @@ import { getProductPage } from "controllers/client/product.controller";
 import {
   getLoginPage,
   getRegisterPage,
+  getSuccessRedirectPage,
   postRegister,
 } from "controllers/client/auth.controller";
 import passport from "passport";
+import { isAdmin, isLogin } from "src/middleware/auth";
 
 const router = express.Router();
 
 const webRoutes = (app: Express) => {
   // user route
   router.get("/", getHomePage);
-
+  router.get("/success-redirect", getSuccessRedirectPage);
   // auth
-  router.get("/login", getLoginPage);
+  router.get("/login", isLogin, getLoginPage);
   router.post(
     "/login",
     passport.authenticate("local", {
-      successRedirect: "/",
+      successRedirect: "/success-redirect",
       failureRedirect: "/login",
       failureMessage: true,
     })
@@ -52,41 +54,45 @@ const webRoutes = (app: Express) => {
   router.get("/product/:id", getProductPage);
 
   // admin routes
-  router.get("/admin", getDashboardPage);
+  router.get("/admin", isAdmin, getDashboardPage);
   // Admin user management routes
-  router.get("/admin/user", getAdminUserPage);
-  router.get("/admin/create-user", getCreateUserPage);
+  router.get("/admin/user", isAdmin, getAdminUserPage);
+  router.get("/admin/create-user", isAdmin, getCreateUserPage);
   router.post(
     "/admin/handle-create-user",
+    isAdmin,
     fileUploadMiddleware("avatar"),
     postCreateUser
   );
-  router.post("/admin/delete-user/:id", postDeleteUser);
-  router.get("/admin/view-user/:id", getViewUser);
+  router.post("/admin/delete-user/:id", isAdmin, postDeleteUser);
+  router.get("/admin/view-user/:id", isAdmin, getViewUser);
   router.post(
     "/admin/update-user",
+    isAdmin,
     fileUploadMiddleware("avatar"),
     postUpdateUser
   );
 
   // Product
-  router.get("/admin/product", getAdminProductPage);
-  router.get("/admin/create-product", getAdminCreateProductPage);
+  router.get("/admin/product", isAdmin, getAdminProductPage);
+  router.get("/admin/create-product", isAdmin, getAdminCreateProductPage);
   router.post(
     "/admin/create-product",
+    isAdmin,
     fileUploadMiddleware("image", "images/product"),
     postAdminCreateProduct
   );
-  router.post("/admin/delete-product/:id", postDeleteProduct);
-  router.get("/admin/view-product/:id", getViewProduct);
+  router.post("/admin/delete-product/:id", isAdmin, postDeleteProduct);
+  router.get("/admin/view-product/:id", isAdmin, getViewProduct);
   router.post(
     "/admin/update-product",
+    isAdmin,
     fileUploadMiddleware("image", "images/product"),
     postUpdateProduct
   );
 
   // Order
-  router.get("/admin/order", getAdminOrderPage);
+  router.get("/admin/order", isAdmin, getAdminOrderPage);
 
   app.use("/", router);
 };

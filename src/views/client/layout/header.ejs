@@ -48,9 +48,108 @@
               >3</span
             >
           </a>
-          <a href="#" class="my-auto">
+
+          <% if(user){ %>
+          <div class="dropdown">
+            <a
+              href="#"
+              class="my-auto dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              style=""
+            >
+              <i class="fas fa-user fa-2x"></i>
+            </a>
+            <ul
+              class="dropdown-menu dropdown-menu-end"
+              style="
+                min-width: 280px;
+                border-radius: 10px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                border: 1px solid #e0e0e0;
+              "
+            >
+              <!-- User Info Header -->
+              <li class="px-3 py-3" style="border-bottom: 1px solid #f0f0f0">
+                <div class="d-flex align-items-center">
+                  <img
+                    src="/images/<%= user.avatar%>"
+                    alt="Avatar"
+                    class="rounded-circle me-3"
+                    style="width: 45px; height: 45px; object-fit: cover"
+                  />
+                  <div>
+                    <h6 class="mb-0" style="font-weight: 600; color: #333">
+                      <%= user.fullName%>
+                    </h6>
+                    <small class="text-muted"><%= user.username%></small>
+                  </div>
+                </div>
+              </li>
+
+              <!-- Menu Items -->
+              <li>
+                <a
+                  class="dropdown-item py-2"
+                  href="#"
+                  style="
+                    transition: all 0.3s ease;
+                    border-radius: 5px;
+                    margin: 5px 10px;
+                  "
+                >
+                  <i
+                    class="fas fa-box me-3"
+                    style="color: #007bff; width: 20px"
+                  ></i>
+                  Quản lý đơn hàng
+                </a>
+              </li>
+              <li>
+                <a
+                  class="dropdown-item py-2"
+                  href="#"
+                  style="
+                    transition: all 0.3s ease;
+                    border-radius: 5px;
+                    margin: 5px 10px;
+                  "
+                >
+                  <i
+                    class="fas fa-history me-3"
+                    style="color: #28a745; width: 20px"
+                  ></i>
+                  Lịch sử mua hàng
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider mx-3" style="margin: 10px 0" />
+              </li>
+              <li>
+                <a
+                  class="dropdown-item py-2"
+                  href="#"
+                  style="
+                    transition: all 0.3s ease;
+                    border-radius: 5px;
+                    margin: 5px 10px;
+                    color: #dc3545;
+                  "
+                >
+                  <i
+                    class="fas fa-sign-out-alt me-3"
+                    style="color: #dc3545; width: 20px"
+                  ></i>
+                  Đăng xuất
+                </a>
+              </li>
+            </ul>
+          </div>
+          <% } else{ %>
+          <a href="/login" class="my-auto">
             <i class="fas fa-user fa-2x"></i>
           </a>
+          <% } %>
         </div>
       </div>
     </nav>

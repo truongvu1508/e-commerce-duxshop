@@ -8,6 +8,7 @@ import { registerNewUser } from "services/client/auth.service";
 
 const getLoginPage = async (req: Request, res: Response) => {
   const user = req.user;
+
   const { session } = req as any;
   const messages = session?.messages ?? [];
   return res.render("client/auth/login.ejs", { messages: messages });
@@ -60,4 +61,13 @@ const postRegister = async (req: Request, res: Response) => {
   return res.redirect("/login");
 };
 
-export { getLoginPage, getRegisterPage, postRegister };
+const getSuccessRedirectPage = async (req: Request, res: Response) => {
+  const user = req.user as any;
+  if (user?.role?.name === "ADMIN") {
+    res.redirect("/admin");
+  } else {
+    res.redirect("/");
+  }
+};
+
+export { getLoginPage, getRegisterPage, postRegister, getSuccessRedirectPage };
