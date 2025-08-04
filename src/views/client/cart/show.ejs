@@ -149,11 +149,15 @@
                   </button>
                 </td>
               </tr>
-              <% }) %>
+              <% }) %> <% if(user?.sumCart===0){%>
+              <tr>
+                <td colspan="6">Chưa có sản phẩm trong giỏ hàng</td>
+              </tr>
+              <%}%>
             </tbody>
           </table>
         </div>
-
+        <% if(user?.sumCart>00){%>
         <div class="row g-4 mt-5">
           <div class="col-sm-8 col-md-7 col-lg-6 col-xl-8">
             <div class="bg-light rounded">
@@ -193,6 +197,7 @@
             </div>
           </div>
         </div>
+        <%}%>
       </div>
     </div>
     <!-- Cart Page End -->
