@@ -21,10 +21,7 @@ import {
   postDeleteProduct,
   postUpdateProduct,
 } from "controllers/admin/product.controller";
-import {
-  getProductPage,
-  postAddProductToCart,
-} from "controllers/client/product.controller";
+import { getProductPage } from "controllers/client/product.controller";
 import {
   getLoginPage,
   getRegisterPage,
@@ -34,7 +31,10 @@ import {
 } from "controllers/client/auth.controller";
 import passport from "passport";
 import { isAdmin, isLogin } from "src/middleware/auth";
-import { getCartPage } from "controllers/client/cart.controller";
+import {
+  getCartPage,
+  postAddProductToCart,
+} from "controllers/client/cart.controller";
 
 const router = express.Router();
 
