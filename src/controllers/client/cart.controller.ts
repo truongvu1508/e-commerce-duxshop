@@ -2,6 +2,7 @@ import { prisma } from "config/client";
 import { Request, Response } from "express";
 import {
   addProductToCart,
+  deleteProductInCart,
   getProductInCart,
 } from "services/client/cart.service";
 
@@ -35,4 +36,16 @@ const postAddProductToCart = async (req: Request, res: Response) => {
   return res.redirect("/");
 };
 
-export { getCartPage, postAddProductToCart };
+const postDeleteProductInCart = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const user = req.user;
+
+  if (user) {
+    await deleteProductInCart(+id, user.id, user.sumCart);
+  } else {
+    return res.redirect("/login");
+  }
+  return res.redirect("/cart");
+};
+
+export { getCartPage, postAddProductToCart, postDeleteProductInCart };
