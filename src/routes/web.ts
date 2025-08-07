@@ -33,6 +33,7 @@ import passport from "passport";
 import { isAdmin, isLogin } from "src/middleware/auth";
 import {
   getCartPage,
+  getCheckoutPage,
   postAddProductToCart,
   postDeleteProductInCart,
 } from "controllers/client/cart.controller";
@@ -64,6 +65,7 @@ const webRoutes = (app: Express) => {
   router.post("/add-product-to-cart/:id", postAddProductToCart);
   router.get("/cart", getCartPage);
   router.post("/delete-product-in-cart/:id", postDeleteProductInCart);
+  router.get("/checkout", getCheckoutPage);
 
   // admin routes
   router.get("/admin", getDashboardPage);
