@@ -36,6 +36,7 @@ import {
   getCheckoutPage,
   postAddProductToCart,
   postDeleteProductInCart,
+  postHandleCartToCheckout,
 } from "controllers/client/cart.controller";
 
 const router = express.Router();
@@ -65,6 +66,7 @@ const webRoutes = (app: Express) => {
   router.post("/add-product-to-cart/:id", postAddProductToCart);
   router.get("/cart", getCartPage);
   router.post("/delete-product-in-cart/:id", postDeleteProductInCart);
+  router.post("/handle-cart-to-checkout", postHandleCartToCheckout);
   router.get("/checkout", getCheckoutPage);
 
   // admin routes

@@ -4,6 +4,7 @@ import {
   addProductToCart,
   deleteProductInCart,
   getProductInCart,
+  updateCartDetailBeforeCheckout,
 } from "services/client/cart.service";
 
 const getCartPage = async (req: Request, res: Response) => {
@@ -67,9 +68,26 @@ const getCheckoutPage = async (req: Request, res: Response) => {
   });
 };
 
+const postHandleCartToCheckout = async (req: Request, res: Response) => {
+  const user = req.user;
+
+  if (!user) {
+    return res.redirect("/login");
+  }
+
+  const currentCartDetail: { id: string; quantity: string }[] =
+    req.body?.cartDetails ?? [];
+
+  await updateCartDetailBeforeCheckout(currentCartDetail);
+  console.log(req.body);
+
+  return res.redirect("/checkout");
+};
+
 export {
   getCartPage,
   postAddProductToCart,
   postDeleteProductInCart,
   getCheckoutPage,
+  postHandleCartToCheckout,
 };

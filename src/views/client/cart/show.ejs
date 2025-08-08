@@ -54,7 +54,7 @@
     <!-- Header End -->
 
     <!-- Cart Page Start -->
-    <div class="container-fluid py-5" style="margin-top: 100px">
+    <div class="container-fluid" style="margin-top: 100px">
       <div class="container py-5">
         <div class="mb-3">
           <nav aria-label="breadcrumb">
@@ -79,7 +79,7 @@
               </tr>
             </thead>
             <tbody>
-              <% cartDetails.forEach( function (cartDetail) { %>
+              <% cartDetails.forEach( function (cartDetail, index) { %>
               <tr>
                 <th scope="row">
                   <div class="d-flex align-items-center">
@@ -121,6 +121,7 @@
                       value="<%= cartDetail.quantity %>"
                       data-cart-detail-id="<%= cartDetail.id%>"
                       data-cart-detail-price="<%= cartDetail.price%>"
+                      data-cart-detail-index="<%= index%>"
                     />
                     <div class="input-group-btn">
                       <button
@@ -191,7 +192,32 @@
                   currency: 'VND' }).format(totalPrice)%>
                 </p>
               </div>
-              <form method="get" action="/checkout">
+              <form method="post" action="/handle-cart-to-checkout">
+                <div style="display: none">
+                  <% cartDetails.forEach(function(cartDetail, index){%>
+                  <div class="mb-3">
+                    <div class="form-group">
+                      <label for="">ID: </label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="cartDetails[<%= index%>][id]"
+                        value="<%= cartDetail.id%>"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="">QUANTITY: </label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="cartDetails[<%= index%>][quantity]"
+                        id="cartDetails[<%= index%>]"
+                        value="<%= cartDetail.quantity%>"
+                      />
+                    </div>
+                  </div>
+                  <%})%>
+                </div>
                 <div class="d-flex justify-content-end align-items-end p-4">
                   <button
                     class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase"

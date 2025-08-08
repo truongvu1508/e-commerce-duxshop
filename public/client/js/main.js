@@ -158,6 +158,13 @@
       }).format(newItemTotal)
     );
 
+    // Cập nhật form input - Cách sửa đúng
+    var index = input.data("cart-detail-index");
+    var formInput = $(`input[name="cartDetails[${index}][quantity]"]`);
+    if (formInput.length > 0) {
+      formInput.val(newVal);
+    }
+
     updateCartTotal();
   });
 
