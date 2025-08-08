@@ -34,9 +34,11 @@ import { isAdmin, isLogin } from "src/middleware/auth";
 import {
   getCartPage,
   getCheckoutPage,
+  getThanksPage,
   postAddProductToCart,
   postDeleteProductInCart,
   postHandleCartToCheckout,
+  postOrder,
 } from "controllers/client/cart.controller";
 
 const router = express.Router();
@@ -68,6 +70,8 @@ const webRoutes = (app: Express) => {
   router.post("/delete-product-in-cart/:id", postDeleteProductInCart);
   router.post("/handle-cart-to-checkout", postHandleCartToCheckout);
   router.get("/checkout", getCheckoutPage);
+  router.post("/order", postOrder);
+  router.get("/thanks", getThanksPage);
 
   // admin routes
   router.get("/admin", getDashboardPage);
