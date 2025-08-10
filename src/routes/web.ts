@@ -8,6 +8,7 @@ import {
   postUpdateUser,
 } from "controllers/user.controller";
 import {
+  getAdminOrderDetailPage,
   getAdminOrderPage,
   getAdminProductPage,
   getAdminUserPage,
@@ -112,6 +113,7 @@ const webRoutes = (app: Express) => {
 
   // Order
   router.get("/admin/order", getAdminOrderPage);
+  router.get("/admin/order/:id", getAdminOrderDetailPage);
 
   app.use("/", isAdmin, router);
 };

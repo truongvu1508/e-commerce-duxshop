@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dashboard</title>
+    <title>Order</title>
     <link
       rel="shortcut icon"
       type="image/png"
@@ -34,6 +34,46 @@
           <div class="container-fluid">
             <!--  Row 1 - Statistics Cards -->
             <div>Order Page</div>
+            <div>
+              <table class="table table-hover table-bordered">
+                <thead>
+                  <th>Id</th>
+                  <th>User</th>
+                  <th>Total Price</th>
+                  <th>Status</th>
+                  <th>Payment Method</th>
+                  <th>Payment Status</th>
+                  <th>Action</th>
+                </thead>
+                <tbody>
+                  <% orders.forEach( function (order) { %>
+                  <tr>
+                    <td><%= order.id %></td>
+                    <td><%= order?.user?.fullName ?? "" %></td>
+                    <td>
+                      <%= new Intl.NumberFormat('vi-VN', { style:'currency',
+                      currency: 'VND' }).format(order.totalPrice)%>
+                    </td>
+                    <td><%= order.status %></td>
+                    <td><%= order.paymentMethod %></td>
+                    <td><%= order.paymentStatus %></td>
+                    <td>
+                      <div style="display: flex; gap: 10px">
+                        <form
+                          action="/admin/order/<%= order.id %>"
+                          method="get"
+                        >
+                          <button type="submit" class="btn btn-warning">
+                            View
+                          </button>
+                        </form>
+                      </div>
+                    </td>
+                  </tr>
+                  <% }) %>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
         <%- include('../layout/footer'); -%>
