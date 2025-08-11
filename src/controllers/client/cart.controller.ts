@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import {
   addProductToCart,
   deleteProductInCart,
+  getOrderHistory,
   getProductInCart,
   handlePlaceOrder,
   updateCartDetailBeforeCheckout,
@@ -115,6 +116,18 @@ const getThanksPage = (req: Request, res: Response) => {
   return res.render("client/cart/thanks.ejs");
 };
 
+const getOrderHistoryPage = async (req: Request, res: Response) => {
+  const user = req.user;
+
+  if (!user) {
+    return res.redirect("/login");
+  }
+
+  const orders = await getOrderHistory(user.id);
+
+  return res.render("client/cart/order.history.ejs", { orders: orders });
+};
+
 export {
   getCartPage,
   postAddProductToCart,
@@ -123,4 +136,5 @@ export {
   postHandleCartToCheckout,
   postOrder,
   getThanksPage,
+  getOrderHistoryPage,
 };

@@ -35,6 +35,7 @@ import { isAdmin, isLogin } from "src/middleware/auth";
 import {
   getCartPage,
   getCheckoutPage,
+  getOrderHistoryPage,
   getThanksPage,
   postAddProductToCart,
   postDeleteProductInCart,
@@ -73,6 +74,7 @@ const webRoutes = (app: Express) => {
   router.get("/checkout", getCheckoutPage);
   router.post("/order", postOrder);
   router.get("/thanks", getThanksPage);
+  router.get("/order-history", getOrderHistoryPage);
 
   // admin routes
   router.get("/admin", getDashboardPage);
