@@ -38,6 +38,7 @@ import {
   getOrderHistoryPage,
   getThanksPage,
   postAddProductToCart,
+  postAddToCartFromDetailPage,
   postDeleteProductInCart,
   postHandleCartToCheckout,
   postOrder,
@@ -75,6 +76,7 @@ const webRoutes = (app: Express) => {
   router.post("/order", postOrder);
   router.get("/thanks", getThanksPage);
   router.get("/order-history", getOrderHistoryPage);
+  router.post("/add-to-cart-from-detail-page/:id", postAddToCartFromDetailPage);
 
   // admin routes
   router.get("/admin", getDashboardPage);
