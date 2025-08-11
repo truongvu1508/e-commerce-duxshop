@@ -102,3 +102,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 50);
   });
 });
+
+document.querySelectorAll(".view-all-btn").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // The parent link will handle navigation
+    window.location.href = btn.closest("a").href;
+  });
+});
