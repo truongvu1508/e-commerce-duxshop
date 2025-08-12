@@ -152,47 +152,74 @@ const handlePlaceOrder = async (
   receiverPhone: string,
   totalPrice: number
 ) => {
-  const cart = await prisma.cart.findUnique({
-    where: { userId: userId },
-    include: {
-      cardDetails: true,
-    },
-  });
-  if (cart) {
-    // create order
-    const dataOrderDetail =
-      cart?.cardDetails?.map((item) => ({
-        price: item.price,
-        quantity: item.quantity,
-        productId: item.productId,
-      })) ?? [];
-
-    await prisma.order.create({
-      data: {
-        receiverName,
-        receiverAddress,
-        receiverPhone,
-        paymentMethod: "COD",
-        paymentStatus: "PAYMENT_UNPAID",
-        status: "PENDING",
-        totalPrice: totalPrice,
-        userId,
-        orderDetail: {
-          create: dataOrderDetail,
+  try {
+    // create transaction
+    await prisma.$transaction(async (tx) => {
+      const cart = await tx.cart.findUnique({
+        where: { userId: userId },
+        include: {
+          cardDetails: true,
         },
-      },
-    });
+      });
+      if (cart) {
+        // create order
+        const dataOrderDetail =
+          cart?.cardDetails?.map((item) => ({
+            price: item.price,
+            quantity: item.quantity,
+            productId: item.productId,
+          })) ?? [];
 
-    // remove cart detail, cart
-    await prisma.cartDetail.deleteMany({
-      where: { cartId: cart.id },
-    });
+        await tx.order.create({
+          data: {
+            receiverName,
+            receiverAddress,
+            receiverPhone,
+            paymentMethod: "COD",
+            paymentStatus: "PAYMENT_UNPAID",
+            status: "PENDING",
+            totalPrice: totalPrice,
+            userId,
+            orderDetail: {
+              create: dataOrderDetail,
+            },
+          },
+        });
 
-    await prisma.cart.delete({
-      where: { id: cart.id },
+        // remove cart detail, cart
+        await tx.cartDetail.deleteMany({
+          where: { cartId: cart.id },
+        });
+
+        await tx.cart.delete({
+          where: { id: cart.id },
+        });
+
+        // check product
+        for (let i = 0; i < cart.cardDetails.length; i++) {
+          const productId = cart.cardDetails[i].productId;
+          const product = await tx.product.findUnique({
+            where: { id: productId },
+          });
+          if (!product || product.quantity < cart.cardDetails[i].quantity) {
+            throw new Error(
+              `Sản phẩm ${product?.name} không tồn tại hoặc không đủ số lượng`
+            );
+          }
+          await tx.product.update({
+            where: { id: productId },
+            data: {
+              quantity: { decrement: cart.cardDetails[i].quantity },
+              sold: { increment: cart.cardDetails[i].quantity },
+            },
+          });
+        }
+      }
     });
+    return "";
+  } catch (error) {
+    return error.message;
   }
-  console.log(cart);
 };
 
 const getOrderHistory = async (userId: number) => {
