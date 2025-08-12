@@ -22,9 +22,12 @@ const getCartPage = async (req: Request, res: Response) => {
     ?.map((item) => +item.price * +item.quantity)
     ?.reduce((a, b) => a + b, 0);
 
+  const cartId = cartDetails.length ? cartDetails[0].cartId : 0;
+
   return res.render("client/cart/show.ejs", {
     cartDetails: cartDetails,
     totalPrice: totalPrice,
+    cartId: cartId,
   });
 };
 
@@ -80,7 +83,9 @@ const postHandleCartToCheckout = async (req: Request, res: Response) => {
   const currentCartDetail: { id: string; quantity: string }[] =
     req.body?.cartDetails ?? [];
 
-  await updateCartDetailBeforeCheckout(currentCartDetail);
+  const { cartId } = req.body;
+
+  await updateCartDetailBeforeCheckout(currentCartDetail, cartId);
   console.log(req.body);
 
   return res.redirect("/checkout");

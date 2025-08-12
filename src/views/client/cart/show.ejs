@@ -194,6 +194,7 @@
               </div>
               <form method="post" action="/handle-cart-to-checkout">
                 <div style="display: none">
+                  <input name="cartId" value="<%= cartId%>" />
                   <% cartDetails.forEach(function(cartDetail, index){%>
                   <div class="mb-3">
                     <div class="form-group">
