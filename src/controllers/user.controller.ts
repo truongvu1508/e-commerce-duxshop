@@ -11,8 +11,8 @@ import {
 
 const getHomePage = async (req: Request, res: Response) => {
   const products = await getProducts();
-  const user = req.user;
-  console.log(user);
+  const { page } = req.query;
+  console.log(">>> current query: ", page);
   return res.render("client/home/show", { products: products });
 };
 
