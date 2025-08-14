@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Laptop - DUX</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="/admin/images/logos/logo-dux.svg"
+    />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icon Font Stylesheet -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Libraries Stylesheet -->
+    <link href="/client/lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+    <link
+      href="/client/lib/owlcarousel/assets/owl.carousel.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/client/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="/client/css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Spinner Start -->
+    <%- include('../layout/spinner'); -%>
+    <!-- Spinner End -->
+
+    <!-- Header start -->
+    <%- include('../layout/header'); -%>
+    <!-- Header End -->
+
+    <!-- Fruits Shop Start-->
+    <div class="container-fluid fruite py-5" style="margin-top: 100px;">
+      <div class="container py-5">
+        <div class="row g-4">
+          <div class="col-lg-12">
+            <div class="row g-4">
+              <div class="col-lg-4">
+                <div class="row g-4">
+                  <div class="col-lg-12">
+                    <div class="mb-3">
+                      <h4>Hãng sản xuất</h4>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="APPLE" id="factory-1">
+                        <label class="form-check-label" for="factory-1">
+                          Apple
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="ASUS" id="factory-2">
+                        <label class="form-check-label" for="factory-2">
+                          Asus
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="LENOVO" id="factory-3">
+                        <label class="form-check-label" for="factory-3">
+                          Lenovo
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="DELL" id="factory-4">
+                        <label class="form-check-label" for="factory-4">
+                          Dell
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="LG" id="factory-5">
+                        <label class="form-check-label" for="factory-5">
+                          LG
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="ACER" id="factory-6">
+                        <label class="form-check-label" for="factory-6">
+                          Acer
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="mb-3">
+                      <h4>Mục đích sử dụng</h4>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="GAMING" id="target-1">
+                        <label class="form-check-label" for="target-1">
+                          Gaming
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="SINHVIEN-VANPHONG" id="target-2">
+                        <label class="form-check-label" for="target-2">
+                          Sinh viên - Văn phòng
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="THIET-KE-DO-HOA" id="target-3">
+                        <label class="form-check-label" for="target-3">
+                          Thiết kế đồ họa
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="MONG-NHE" id="target-4">
+                        <label class="form-check-label" for="target-4">
+                          Mỏng nhẹ
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="DOANH-NHAN" id="target-5">
+                        <label class="form-check-label" for="target-5">
+                          Doanh nhân
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="mb-3">
+                      <h4>Mức giá</h4>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="duoi-10-trieu" id="price-2">
+                        <label class="form-check-label" for="price-2">
+                          Dưới 10 triệu
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="tu-10-den-15-trieu" id="price-3">
+                        <label class="form-check-label" for="price-3">
+                          Từ 10 - 15 triệu
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="tu-15-den-20-trieu" id="price-4">
+                        <label class="form-check-label" for="price-4">
+                          Từ 15 - 20 triệu
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="tren-20-trieu" id="price-5">
+                        <label class="form-check-label" for="price-5">
+                          Trên 20 triệu
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="mb-3">
+                      <h4>Sắp xếp</h4>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" value="gia-tang-dan" id="sort-1">
+                        <label class="form-check-label" for="sort-1">
+                          Giá tăng dần
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" value="gia-giam-dan" id="sort-2">
+                        <label class="form-check-label" for="sort-2">
+                          Giá giảm dần
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" value="khong-sap-xep" id="sort-3">
+                        <label class="form-check-label" for="sort-3">
+                          Không sắp xếp
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <button class="btn border-secondary rounded-pill px-4 py-3 text-primary mt-3">Lọc sản phẩm</button>
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <div class="row g-4 justify-content-center">
+                  <% products.forEach( function (product) { %>
+                  <div class="col-md-6 col-lg-4 col-xl-4">
+                    <div class="rounded position-relative fruite-item">
+                      <div class="fruite-img">
+                        <img
+                          src="/images/product/<%= product.image%>"
+                          class="img-fluid w-100 rounded-top"
+                          alt=""
+                        />
+                      </div>
+                      <div
+                        class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+                        style="top: 10px; left: 10px"
+                      >
+                        <%= product.factory%>
+                      </div>
+                      <div
+                        class="p-4 border border-secondary border-top-0 rounded-bottom"
+                      >
+                        <h4 style="font-size: 15px">
+                          <a href="/product/<%=product.id%>"
+                            ><%= product.name%></a
+                          >
+                        </h4>
+                        <p style="font-size: 13px"><%= product.shortDesc%></p>
+                        <div class="d-flex flex-lg-wrap justify-content-center">
+                          <p
+                            style="
+                              font-size: 15px;
+                              text-align: center;
+                              width: 100%;
+                            "
+                            class="text-dark fs-5 fw-bold mb-0"
+                          >
+                            <%= new Intl.NumberFormat('vi-VN', {
+                            style:'currency', currency: 'VND'
+                            }).format(product.price)%>
+                          </p>
+                          <form
+                            method="post"
+                            action="/add-product-to-cart/<%=product.id%>"
+                          >
+                            <button
+                              class="mx-auto btn border border-secondary rounded-pill px-3 text-primary mt-3"
+                            >
+                              <i
+                                class="fa fa-shopping-bag me-2 text-primary"
+                              ></i>
+                              Add to cart
+                            </button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <% }) %>
+                  <div class="pagination d-flex mt-5 justify-content-center">
+                    <li class="<%= page === 1 ? 'disabled page-item' : 'page-item'%>">
+                      <a class="page-link" href="/products/?page=<%=page-1%>" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+                    <%for(let i=0;i<totalPages; i++){%>
+                      <li class="page-item">
+                        <a class="<%= page === (i+1) ? 'active page-link' : 'page-link'%>" href="/products/?page=<%=i+1%>"><%=i+1%></a>
+                      </li>
+                    <%}%>
+                    <li class="<%= page === totalPages ? 'disabled page-item' : 'page-item'%>">
+                      <a class="page-link" href="/products/?page=<%=page+1%>" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fruits Shop End-->
+
+    <!-- Footer Start -->
+    <%- include('../layout/footer'); -%>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <%- include('../layout/backtotop.ejs'); -%>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/client/lib/easing/easing.min.js"></script>
+    <script src="/client/lib/waypoints/waypoints.min.js"></script>
+    <script src="/client/lib/lightbox/js/lightbox.min.js"></script>
+    <script src="/client/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/client/js/main.js"></script>
+  </body>
+</html>

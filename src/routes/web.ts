@@ -6,6 +6,7 @@ import {
   postDeleteUser,
   getViewUser,
   postUpdateUser,
+  getProductFilterPage,
 } from "controllers/user.controller";
 import {
   getAdminOrderDetailPage,
@@ -49,6 +50,7 @@ const router = express.Router();
 const webRoutes = (app: Express) => {
   // user route
   router.get("/", getHomePage);
+  router.get("/products", getProductFilterPage);
   router.get("/success-redirect", getSuccessRedirectPage);
   // auth
   router.get("/login", isLogin, getLoginPage);
