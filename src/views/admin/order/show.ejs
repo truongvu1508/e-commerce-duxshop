@@ -73,6 +73,25 @@
                   <% }) %>
                 </tbody>
               </table>
+              <nav aria-label="Admin order pagination">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item">
+                    <a class="<%= page === 1 ? 'disabled page-link' : 'page-link'%>" href="/admin/order?page=<%=page-1%>" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <%for(let i=0; i<totalPages; i++){%>
+                    <li class="page-item">
+                    <a class="<%= page === (i+1) ? 'active page-link' : 'page-link'%>" href="/admin/order?page=<%=i+1%>"><%=i+1%></a>
+                  </li>
+                  <%}%>
+                  <li class="page-item">
+                    <a class="<%= page === totalPages ? 'disabled page-link' : 'page-link'%>" href="/admin/order?page=<%=page+1%>" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
             </div>
           </div>
         </div>
