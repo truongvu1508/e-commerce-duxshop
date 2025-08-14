@@ -148,6 +148,23 @@
                       </div>
                     </div>
                     <% }) %>
+                    <div class="pagination d-flex mt-5 justify-content-center">
+                      <li class="<%= page === 1 ? 'disabled page-item' : 'page-item'%>">
+                        <a class="page-link" href="/?page=<%=page-1%>" aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                        </a>
+                      </li>
+                      <%for(let i=0;i<totalPages; i++){%>
+                        <li class="page-item">
+                          <a class="<%= page === (i+1) ? 'active page-link' : 'page-link'%>" href="/?page=<%=i+1%>"><%=i+1%></a>
+                        </li>
+                      <%}%>
+                      <li class="<%= page === totalPages ? 'disabled page-item' : 'page-item'%>">
+                        <a class="page-link" href="/?page=<%=page+1%>" aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                        </a>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
