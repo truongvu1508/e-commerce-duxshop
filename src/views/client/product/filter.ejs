@@ -262,23 +262,38 @@
                     </div>
                   </div>
                   <% }) %>
-                  <div class="pagination d-flex mt-5 justify-content-center">
-                    <li class="<%= page === 1 ? 'disabled page-item' : 'page-item'%>">
-                      <a class="page-link" href="/products/?page=<%=page-1%>" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                      </a>
-                    </li>
-                    <%for(let i=0;i<totalPages; i++){%>
-                      <li class="page-item">
-                        <a class="<%= page === (i+1) ? 'active page-link' : 'page-link'%>" href="/products/?page=<%=i+1%>"><%=i+1%></a>
+                  <%if(products?.length){%>
+                    <div class="pagination d-flex mt-5 justify-content-center">
+                      <li class="<%= page === 1 ? 'disabled page-item' : 'page-item'%>">
+                        <a class="page-link" href="/products/?page=<%=page-1%>" aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                        </a>
                       </li>
-                    <%}%>
-                    <li class="<%= page === totalPages ? 'disabled page-item' : 'page-item'%>">
-                      <a class="page-link" href="/products/?page=<%=page+1%>" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                      </a>
-                    </li>
-                  </div>
+                      <%for(let i=0;i<totalPages; i++){%>
+                        <li class="page-item">
+                          <a class="<%= page === (i+1) ? 'active page-link' : 'page-link'%>" href="/products/?page=<%=i+1%>"><%=i+1%></a>
+                        </li>
+                      <%}%>
+                      <li class="<%= page === totalPages ? 'disabled page-item' : 'page-item'%>">
+                        <a class="page-link" href="/products/?page=<%=page+1%>" aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                        </a>
+                      </li>
+                    </div>
+                  <%} else {%>
+                    <div class="col-12">
+                      <div class="text-center py-5 my-5">
+                        <div class="mb-3">
+                          <i class="fas fa-search fa-3x text-muted"></i>
+                        </div>
+                        <h4 class="text-muted mb-3">Không tìm thấy sản phẩm</h4>
+                        <p class="text-muted">Không có sản phẩm nào phù hợp với tiêu chí lọc của bạn</p>
+                        <button class="btn btn-primary mt-3" onclick="window.location.href='/products'">
+                          Xem tất cả sản phẩm
+                        </button>
+                      </div>
+                    </div>
+                  <%}%>
                 </div>
               </div>
             </div>
