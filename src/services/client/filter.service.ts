@@ -1,93 +1,83 @@
 import { prisma } from "config/client";
 
-const userFilter = async (usernameInput: string) => {
-  return await prisma.user.findMany({
-    where: {
-      username: {
-        contains: usernameInput,
-      },
-    },
-  });
-};
+const getProductWithFilter = async (
+  page: number,
+  pageSize: number,
+  factory: string,
+  target: string,
+  price: string,
+  sort: string
+) => {
+  // build where query
+  let whereClause: any = {};
 
-const productFilterFactory = async (factoryInput: string) => {
-  return await prisma.product.findMany({
-    where: {
-      factory: {
-        equals: factoryInput,
-      },
-    },
-  });
-};
+  if (factory) {
+    const factoryInput = factory.split(",");
+    whereClause.factory = {
+      in: factoryInput,
+    };
+  }
 
-const productFilterFactories = async (factoryArray: string[]) => {
-  return await prisma.product.findMany({
-    where: {
-      factory: {
-        in: factoryArray,
-      },
-    },
-  });
-};
+  if (target) {
+    const targetInput = target.split(",");
+    whereClause.target = {
+      in: targetInput,
+    };
+  }
 
-const productFilterMinPrice = async (minPrice: number) => {
-  return await prisma.product.findMany({
-    where: {
-      price: {
-        gte: minPrice,
-      },
-    },
-  });
-};
+  if (price) {
+    const priceInput = price.split(",");
 
-const productFilterMaxPrice = async (maxPrice: number) => {
-  return await prisma.product.findMany({
-    where: {
-      price: {
-        lte: maxPrice,
-      },
-    },
-  });
-};
+    const priceCondition = [];
+    for (let i = 0; i < priceInput.length; i++) {
+      if (priceInput[i] === "duoi-10-trieu") {
+        priceCondition.push({ price: { lt: 10000000 } });
+      }
+      if (priceInput[i] === "tu-10-den-15-trieu") {
+        priceCondition.push({ price: { gte: 10000000, lte: 15000000 } });
+      }
+      if (priceInput[i] === "tu-15-den-20-trieu") {
+        priceCondition.push({ price: { gte: 15000000, lte: 20000000 } });
+      }
+      if (priceInput[i] === "tren-20-trieu") {
+        priceCondition.push({ price: { gt: 20000000 } });
+      }
+    }
 
-const productFilterPrice = async (minPrice: number, maxPrice: number) => {
-  return await prisma.product.findMany({
-    where: {
-      price: {
-        gte: minPrice,
-        lte: maxPrice,
-      },
-    },
-  });
-};
-const productFilterPrices = async () => {
-  return await prisma.product.findMany({
-    where: {
-      OR: [
-        { price: { gte: 10000000, lte: 15000000 } },
-        { price: { gte: 16000000, lte: 20000000 } },
-      ],
-    },
-  });
-};
+    whereClause.OR = priceCondition;
+  }
 
-const productFilterPriceAsc = async () => {
-  return await prisma.product.findMany({
-    orderBy: [
-      {
+  // build sort query
+  let orderByClause: any = {};
+
+  if (sort) {
+    if (sort === "gia-tang-dan") {
+      orderByClause = {
         price: "asc",
-      },
-    ],
-  });
+      };
+    }
+    if (sort === "gia-giam-dan") {
+      orderByClause = {
+        price: "desc",
+      };
+    }
+  }
+
+  const skip = (page - 1) * pageSize;
+
+  const [products, count] = await prisma.$transaction([
+    prisma.product.findMany({
+      skip: skip,
+      take: pageSize,
+      where: whereClause,
+      orderBy: orderByClause,
+    }),
+    prisma.product.count({ where: whereClause }),
+  ]);
+
+  const totalPages = Math.ceil(count / pageSize);
+
+  return { products, totalPages };
 };
 
-export {
-  userFilter,
-  productFilterFactory,
-  productFilterFactories,
-  productFilterMinPrice,
-  productFilterMaxPrice,
-  productFilterPrice,
-  productFilterPrices,
-  productFilterPriceAsc,
-};
+export { getProductWithFilter };
