@@ -310,4 +310,136 @@
       );
     }
   });
+
+  // Custom toast functions
+  function showSuccessToast(message, heading = "🎉 Thành công!") {
+    $.toast({
+      heading: heading,
+      text: message,
+      position: "top-right",
+      icon: "success",
+      hideAfter: 3000,
+      stack: 3,
+    });
+  }
+
+  function showErrorToast(message, heading = "❌ Lỗi thao tác") {
+    $.toast({
+      heading: heading,
+      text: message,
+      position: "top-right",
+      icon: "error",
+      hideAfter: 4000,
+      stack: false,
+    });
+  }
+
+  function showCartToast(productName, cartCount) {
+    const message = productName
+      ? `Đã thêm "${productName}" vào giỏ hàng. Bạn có ${cartCount} sản phẩm.`
+      : `Thêm sản phẩm vào giỏ hàng thành công. Bạn có ${cartCount} sản phẩm.`;
+
+    $.toast({
+      heading: "🛒 Giỏ hàng",
+      text: message,
+      position: "top-right",
+      icon: "success",
+      hideAfter: 4000,
+      stack: 3,
+    });
+  }
+
+  function showLoginErrorToast() {
+    $.toast({
+      heading: "🔐 Yêu cầu đăng nhập",
+      text: "Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng",
+      position: "top-right",
+      icon: "error",
+      hideAfter: 4000,
+      stack: false,
+    });
+  }
+
+  // handle add to cart with ajax - Updated with custom toast
+  $(".btnAddToCartHomePage").click(function (event) {
+    event.preventDefault();
+
+    if (!isLogin()) {
+      showLoginErrorToast();
+      return;
+    }
+
+    const productId = $(this).attr("data-product-id");
+    const productName = $(this).closest(".fruite-item").find("h4 a").text();
+
+    $.ajax({
+      url: `${window.location.origin}/api/add-product-to-cart`,
+      type: "POST",
+      data: JSON.stringify({ quantity: 1, productId: productId }),
+      contentType: "application/json",
+
+      success: function (response) {
+        const sum = +response.data;
+
+        // update cart
+        $("#sumCart").text(sum);
+
+        // show custom toast
+        showCartToast(productName, sum);
+      },
+      error: function (response) {
+        showErrorToast("Có lỗi xảy ra, vui lòng thử lại sau");
+        console.log("error: ", response);
+      },
+    });
+  });
+
+  $(".btnAddToCartDetailPage").click(function (event) {
+    event.preventDefault();
+
+    if (!isLogin()) {
+      showLoginErrorToast();
+      return;
+    }
+
+    const productId = $(this).attr("data-product-id");
+    const quantity = $("#quantityDetail").val();
+    const productName = $("h4.fw-bold").first().text();
+
+    $.ajax({
+      url: `${window.location.origin}/api/add-product-to-cart`,
+      type: "POST",
+      data: JSON.stringify({ quantity: quantity, productId: productId }),
+      contentType: "application/json",
+
+      success: function (response) {
+        const sum = +response.data;
+
+        // update cart
+        $("#sumCart").text(sum);
+
+        // show custom toast
+        showCartToast(productName, sum);
+      },
+      error: function (response) {
+        showErrorToast("Có lỗi xảy ra, vui lòng thử lại sau");
+        console.log("error: ", response);
+      },
+    });
+  });
+
+  function isLogin() {
+    const navElement = $("#navbarCollapse");
+    const childLogin = navElement.find("a.a-login");
+    if (childLogin.length > 0) {
+      return false;
+    }
+    return true;
+  }
+
+  // Make custom toast functions available globally
+  window.showSuccessToast = showSuccessToast;
+  window.showErrorToast = showErrorToast;
+  window.showCartToast = showCartToast;
+  window.showLoginErrorToast = showLoginErrorToast;
 })(jQuery);

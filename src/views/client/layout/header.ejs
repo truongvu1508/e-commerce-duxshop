@@ -45,6 +45,7 @@
             <span
               class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1 bg-orange"
               style="top: -5px; left: 15px; height: 20px; min-width: 20px"
+              id="sumCart"
               ><%= user?.sumCart ?? 0%></span
             >
           </a>
@@ -148,7 +149,7 @@
             </ul>
           </div>
           <% } else{ %>
-          <a href="/login" class="my-auto">
+          <a href="/login" class="my-auto a-login">
             <i class="fas fa-user fa-2x"></i>
           </a>
           <% } %>
