@@ -4,7 +4,7 @@ import {
   handleGetAllUser,
   handleGetUserById,
   handleUpdateUserById,
-} from "services/client/api.service";
+} from "services/api/user.service";
 import { registerNewUser } from "services/client/auth.service";
 import { addProductToCart } from "services/client/cart.service";
 import {
