@@ -7,6 +7,7 @@ const handleUserLogin = async (username: string, password: string) => {
   // check user exist in database
   const user = await prisma.user.findUnique({
     where: { username: username },
+    include: { role: true },
   });
 
   if (!user || !(await comparePassword(password, user.password))) {
@@ -18,6 +19,7 @@ const handleUserLogin = async (username: string, password: string) => {
     id: user.id,
     username: user.username,
     roleId: user.roleId,
+    role: user.role,
     accountType: user.accountType,
     avatar: user.avatar,
   };

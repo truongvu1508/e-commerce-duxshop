@@ -1,4 +1,4 @@
-import { loginAPI } from "controllers/api/auth.controller";
+import { fetchAccountAPI, loginAPI } from "controllers/api/auth.controller";
 import {
   createUserAPI,
   deleteUserByIdAPI,
@@ -15,7 +15,7 @@ const router = express.Router();
 const apiRoutes = (app: Express) => {
   router.post("/add-product-to-cart", postAddProductToCartAPI);
 
-  router.get("/users", checkValidJWT, getAllUsersAPI);
+  router.get("/users", getAllUsersAPI);
   router.get("/users/:id", getUserByIdAPI);
   router.post("/users", createUserAPI);
   router.put("/users/:id", updateUserByIdAPI);
@@ -23,7 +23,9 @@ const apiRoutes = (app: Express) => {
 
   router.post("/login", loginAPI);
 
-  app.use("/api", router);
+  router.get("/account", fetchAccountAPI);
+
+  app.use("/api", checkValidJWT, router);
 };
 
 export default apiRoutes;

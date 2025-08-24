@@ -9,9 +9,13 @@ import session from "express-session";
 import apiRoutes from "routes/api";
 const { PrismaSessionStore } = require("@quixo3/prisma-session-store");
 const { PrismaClient } = require("@prisma/client");
+import cors from "cors";
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+
+// config cors
+app.use(cors());
 
 // config view engine
 app.set("view engine", "ejs");

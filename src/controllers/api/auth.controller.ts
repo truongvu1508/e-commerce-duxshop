@@ -16,4 +16,11 @@ const loginAPI = async (req: Request, res: Response) => {
   }
 };
 
-export { loginAPI };
+const fetchAccountAPI = async (req: Request, res: Response) => {
+  const user = req.user;
+  return res.status(200).json({
+    data: user,
+  });
+};
+
+export { loginAPI, fetchAccountAPI };
