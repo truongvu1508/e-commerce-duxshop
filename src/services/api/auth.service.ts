@@ -17,11 +17,16 @@ const handleUserLogin = async (username: string, password: string) => {
   const payload = {
     id: user.id,
     username: user.username,
-    role: user.roleId,
+    roleId: user.roleId,
+    accountType: user.accountType,
+    avatar: user.avatar,
   };
-  const secret = process.env.JKT_SECRET;
+
+  const secret = process.env.JWT_SECRET;
+  const expiresIn: any = process.env.JWT_EXPIRES_IN;
+
   const access_token = jwt.sign(payload, secret, {
-    expiresIn: "1d",
+    expiresIn: expiresIn,
   });
   return access_token;
 };
