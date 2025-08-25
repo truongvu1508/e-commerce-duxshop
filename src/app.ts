@@ -15,7 +15,11 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // config cors
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:5173"],
+  })
+);
 
 // config view engine
 app.set("view engine", "ejs");
